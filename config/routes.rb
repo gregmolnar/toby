@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  get 'passwords/index'
+
+  devise_scope :user do
+    get 'invitation' => 'invitation#invitation', as: 'invitation'
+    post 'invitation' => 'invitation#register_invitation'
+  end
 
   devise_for :users
+
+  resources :groups do
+    resources :users, only: [:index, :destroy]
+  end
+  resources :invitations
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

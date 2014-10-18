@@ -1,0 +1,17 @@
+<div class="sign_in">
+  <%= simple_form_for(@user, :url => invitation_path) do |f| %>
+    <h2>Sign up</h2>
+    <div class="form-inputs">
+      <%= f.input :email, input_html: {autocomplete: 'off', disabled: true} %>
+      <%= f.input :name, input_html: {autocomplete: 'off'} %>
+      <%= f.input :name, autofocus: true, input_html: {autocomplete: 'off'} %>
+      <%= f.input :password, required: true, input_html: {autocomplete: 'off'} %>
+      <%= f.input :password_confirmation, required: true, input_html: {autocomplete: 'off'} %>
+      <%= hidden_field :invitation, :token, value: params["invitation"]["token"] %>
+      <%= f.button :submit, "Sign up", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+  <div class="modal-footer">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
