@@ -1,0 +1,56 @@
+// Place all the styles related to the passwords controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+body.login {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+  color: #34495e;
+  .sign_in{
+    width: 400px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius:5px;
+    @include box-shadow(inset 0 1px 2px rgba(0,0,0,.05));
+  }
+  .sign_in form{
+    padding: 19px 29px 29px;
+    max-width: 400px;
+  }
+  .sign_in .sign_in-heading, .sign_in .checkbox {
+    margin-bottom: 10px;
+    input{
+    display: block;
+    }
+  }
+  .sign_in input[type="text"],
+  .sign_in input[type="email"],
+  .sign_in input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+  }
+  .footer{
+    padding: 14px 15px 15px;
+    margin-bottom: 0;
+    text-align: right; // right align buttons
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    border-radius: 0 0 6px 6px;
+    @include box-shadow(inset 0 1px 0 #fff);
+    .btn + .btn {
+      margin-left: 5px;
+      margin-bottom: 0;
+    }
+    .btn-group .btn + .btn {
+      margin-left: -1px;
+    }
+    .btn-block + .btn-block {
+      margin-left: 0;
+    }
+  }
+}
+
