@@ -12,9 +12,9 @@
       <tr>
         <td><%= group.name %></td>
         <td>
-          <%= link_to 'Show', group %>
-          <%= link_to 'Edit', edit_group_path(group) %>
-          <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Show', group, class: 'btn-sm btn-primary'%>
+          <%= link_to 'Edit', edit_group_path(group), class: 'btn-sm btn-warning' %>
+          <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-sm btn-danger' %>
         </td>
       </tr>
     <% end %>
