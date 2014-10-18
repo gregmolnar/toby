@@ -58,6 +58,8 @@ SimpleNavigation::Configuration.run do |navigation|
     # Add an item which has a sub navigation (same params, but with block)
     primary.item :groups, 'Groups', groups_path
 
+    primary.item :profile, 'Profile', edit_user_registration_path
+
     # you can also specify html attributes to attach to this particular level
     # works for all levels of the menu
     primary.dom_attributes = {class: 'nav navbar-nav'}
