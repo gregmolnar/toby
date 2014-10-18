@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :group
+  load_and_authorize_resource :user, through: :group
   before_action :set_group
 
   def index
