@@ -1,0 +1,56 @@
+<div class="container">
+  <h1>Members of <%= @group.name %></h1>
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'groups/subnav' %>
+    </div>
+    <div class="col-md-9">
+      <table class="table table-condensed table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @group.users.each do |user| %>
+            <tr>
+              <td><%= user.email %></td>
+              <td>
+                <%= link_to 'Remove', group_user_path(@group, user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-small' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <fieldset>
+        <legend>Invite someone</legend>
+        <%= render 'invitations/form' %>
+      </fieldset>
+
+      <table class="table table-condensed table-bordered append">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Sent at</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @group.invitations(persisted: true).each do |invitation| %>
+            <tr>
+              <td><%= invitation.email %></td>
+              <td><%= invitation.created_at %></td>
+              <td>
+                <%= link_to 'Revoke', group_invitation_path(@group, invitation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-small' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br>
+
+    </div>
+  </div>
+</div>
