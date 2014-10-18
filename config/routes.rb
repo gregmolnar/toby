@@ -11,8 +11,9 @@ Rails.application.routes.draw do
 
   resources :groups do
     resources :users, only: [:index, :destroy]
+    resources :invitations
   end
-  resources :invitations
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
