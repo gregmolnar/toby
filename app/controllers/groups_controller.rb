@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    @group = Group.new
+    @group = current_user.groups.new
   end
 
   # GET /groups/1/edit
@@ -24,10 +24,11 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = current_user.groups.new(group_params)
+    @group = Group.new(group_params)
 
     respond_to do |format|
       if @group.save
+        GroupsUser.create!(user_id: current_user.id, group_id: @group.id, admin: true)
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else

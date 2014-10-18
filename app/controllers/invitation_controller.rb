@@ -8,7 +8,7 @@ class InvitationController < Devise::RegistrationsController
       return
     end
     unless @invitation.user.nil?
-      @invitation.project.users<< @invitation.user unless @invitation.project.users.include? @invitation.user
+      @invitation.project.users<< @invitation.user unless @invitation.group.users.include? @invitation.user
       @invitation.destroy
       redirect_to new_user_session_path
     end

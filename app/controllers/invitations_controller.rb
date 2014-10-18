@@ -26,7 +26,7 @@ class InvitationsController < ApplicationController
   # POST /invitations.json
   def create
     @invitation = @group.invitations.new(invitation_params)
-
+    @invitation.sender = current_user
     respond_to do |format|
       if @invitation.save
         format.html {
@@ -68,7 +68,7 @@ class InvitationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group
-      @group = current_user.groups.find(params[:group_id])
+      @group = current_user.owned_groups.find(params[:group_id])
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_invitation

@@ -3,7 +3,7 @@ require 'test_helper'
 class InvitationsControllerTest < ActionController::TestCase
   def setup
     super
-    @group = Group.create(name: 'Foo', user: @user)
+    @group = groups(:one)
     @invitation = invitations(:one)
   end
 

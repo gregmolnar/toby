@@ -6,7 +6,10 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
     can :manage, Password, user_id: user.id
-    can :manage, Group, user_id: user.id
+    can :create, Group
+    can :manage, Group do |group|
+        group.admins.include? user
+    end
     #   if user.admin?
     #     can :manage, :all
     #   else

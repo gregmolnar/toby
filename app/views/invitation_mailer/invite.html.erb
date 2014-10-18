@@ -1,2 +1,2 @@
-<%= @invitation.group.user.email %> has invited you to <%= @invitation.group.name %>. <br />
+<%= @invitation.sender.email %> has invited you to <%= @invitation.group.name %>. <br />
 Click on this link to accept the invitation: <a href="<%= invitation_url(invitation: {token: @invitation.token}) %>">Accept</a>

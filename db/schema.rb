@@ -15,27 +15,27 @@ ActiveRecord::Schema.define(version: 20141018101305) do
 
   create_table "groups", force: true do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
-
   create_table "groups_users", force: true do |t|
     t.integer  "group_id"
     t.integer  "user_id"
+    t.boolean  "admin",      default: false
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "groups_users", ["admin"], name: "index_groups_users_on_admin", using: :btree
   add_index "groups_users", ["group_id"], name: "index_groups_users_on_group_id", using: :btree
   add_index "groups_users", ["user_id"], name: "index_groups_users_on_user_id", using: :btree
 
   create_table "invitations", force: true do |t|
     t.integer  "user_id"
     t.integer  "group_id"
+    t.integer  "sender_id"
     t.string   "email"
     t.string   "token"
     t.datetime "created_at"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20141018101305) do
   end
 
   add_index "invitations", ["group_id"], name: "index_invitations_on_group_id", using: :btree
+  add_index "invitations", ["sender_id"], name: "index_invitations_on_sender_id", using: :btree
   add_index "invitations", ["user_id"], name: "index_invitations_on_user_id", using: :btree
 
   create_table "passwords", force: true do |t|

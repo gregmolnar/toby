@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class GroupsControllerTest < ActionController::TestCase
-  setup do
+  def setup
+    super
     @group = groups(:one)
   end
 
@@ -18,9 +19,9 @@ class GroupsControllerTest < ActionController::TestCase
 
   test "should create group" do
     assert_difference('Group.count') do
-      post :create, group: {  }
+      post :create, group: { name: "foobar" }
     end
-
+    assert_includes Group.last.admins, @user
     assert_redirected_to group_path(assigns(:group))
   end
 
