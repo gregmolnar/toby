@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   has_many :groups_users
   has_many :groups, through: :groups_users
   has_many :owned_groups, ->{ where("groups_users.admin = 1") }, through: :groups_users, source: :group
+  has_many :passwords
 end
