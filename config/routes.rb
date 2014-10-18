@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :passwords
+
   devise_scope :user do
     get 'invitation' => 'invitation#invitation', as: 'invitation'
     post 'invitation' => 'invitation#register_invitation'
