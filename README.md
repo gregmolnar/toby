@@ -2,7 +2,7 @@
 
 Toby is a password manager. Toby was designed with two password categories in mind: personal passwords, and passwords that are to be shared within a team.
 
-Note: A Demo account is provided for Toby. Username: Demo, Password: Demo. The Demo account may not change its own password, but is otherwise fully functional.
+Note: A Demo account is provided for Toby. Login: demo@toby.toby, Password: 12345678. The Demo account may not change its own password, but is otherwise fully functional.
 
 Passwords are encrypted and decrypted on the client side by the web application, using Toby passwords and encryption keys. The server never comes into contact with decrypted passwords.
 
