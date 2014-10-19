@@ -1,6 +1,7 @@
 class PasswordsController < ApplicationController
   load_and_authorize_resource
-  before_action :find_password, except: [:create, :new, :index]
+  before_action :find_password, except: [:create, :new, :index, :verify]
+  helper DeviseHelper
   def index
     @passwords = current_user.passwords.all
   end
@@ -21,6 +22,14 @@ class PasswordsController < ApplicationController
 
   def edit
 
+  end
+
+  def verify
+    if current_user.valid_password?(params[:password])
+      render json: "Ok"
+    else
+      render json: "Nope", status: :unauthorized
+    end
   end
 
   private
