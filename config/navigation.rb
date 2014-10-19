@@ -60,6 +60,8 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :profile, 'Profile', edit_user_registration_path
 
+    primary.item :log_out, 'Log Out', destroy_user_session_path, if: -> { user_signed_in? }, method: :delete
+
     # you can also specify html attributes to attach to this particular level
     # works for all levels of the menu
     primary.dom_attributes = {class: 'nav navbar-nav'}
