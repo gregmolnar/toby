@@ -1,0 +1,7 @@
+<h1>New password</h1>
+<div class="form-inputs">
+  <label>Your Toby password</label> <%= password_field_tag :key %> <%= link_to "Verify", "javascript:void(0)", id: "verify" %>
+</div>
+<%= render 'form' %>
+
+<%= link_to 'Back', passwords_path %>

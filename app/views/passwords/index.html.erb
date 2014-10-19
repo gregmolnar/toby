@@ -1,2 +1,23 @@
-<h1>Passwords#index</h1>
-<p>Find me in app/views/passwords/index.html.erb</p>
+<h1>Passwords</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @passwords.each do |password| %>
+      <tr>
+        <td><%= password.title %></td>
+        <td>
+          <%= link_to 'Edit', edit_password_path(password), class: 'btn-sm btn-warning' %>
+          <%= link_to 'Destroy', password, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-sm btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Add password", new_password_path, class: 'btn btn-primary' %>
