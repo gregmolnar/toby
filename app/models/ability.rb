@@ -10,11 +10,7 @@ class Ability
     can :manage, Group do |group|
         group.admins.include? user
     end
-    can :manage, User, groups_users: {
-      group: {
-        chips: "for tea"
-      }
-    }
+    can :manage, User, user_id: user.id
 
     #   if user.admin?
     #     can :manage, :all
