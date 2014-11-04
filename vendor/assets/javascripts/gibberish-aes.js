@@ -226,6 +226,7 @@
             string += block2s(plainBlocks[i], false);
         }
         string += block2s(plainBlocks[i], true);
+        string = string.replace(/\n$/,'');
         return binary ? string : dec_utf8(string); 
     },
 
@@ -645,7 +646,7 @@
         cryptArr = cryptArr.slice(16, cryptArr.length);
         // Take off the Salted__ffeeddcc
         string = rawDecrypt(cryptArr, key, iv, binary);
-        return string;
+        return string.replace(/\n$/,'');;
     },
     
     MD5 = function(numArr) {
